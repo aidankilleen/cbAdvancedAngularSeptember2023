@@ -16,6 +16,23 @@ export class MemberService {
   getAll(): Observable<Member[]> {
 
     return this.http.get<Member[]>(this.url);
-
   }
+  get(id: number): Observable<Member> {
+
+    return this.http.get<Member>(`${this.url}/${id}`);
+  }
+  delete(id: number): Observable<void> {
+
+    return this.http.delete<void>(`${this.url}/${id}`);
+  }
+  add(member: Member): Observable<Member> {
+
+    return this.http.post<Member>(this.url, member);
+  }
+  update(member: Member): Observable<Member> {
+
+    return this.http.put<Member>(`${this.url}/${member.id}`, member);
+  }
+
+
 }
