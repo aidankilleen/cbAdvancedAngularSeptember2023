@@ -33,7 +33,23 @@ import { Observable } from 'rxjs';
       </tbody>
     </table>
     <hr>
+   
+    <member-dialog 
+      [(show)]="showDialog"
+      [(member)]="editingMember"
+      (save)="onSave()"
+    />
+<!--
+      <member-dialog 
+      [show]="showDialog"
+      (showChange)="onShowChange()"
+      [member]="editingMember"
+      (memberChange)="onMemberChange($event)"
+      (save)="onSave()"
+      />
+-->
 
+      <!--
     <div *ngIf="showDialog">
       <h2>New Member</h2>
       <input [(ngModel)]="editingMember.name" placeholder="Name"/><br>
@@ -43,8 +59,8 @@ import { Observable } from 'rxjs';
       <button (click)="onSave()">Save</button>
       <button (click)="onCancel()">Cancel</button>
     </div>
+      -->
     <hr>
-    {{ editingMember | json }}
 
   `,
   styleUrls: ['./app.component.css']
@@ -66,6 +82,13 @@ export class AppComponent implements OnInit {
 
   }
 
+  onShowChange() {
+    this.showDialog = !this.showDialog;
+  }
+
+  onMemberChange(member: Member) {
+    this.editingMember = member;
+  }
   onUpdate(member: Member) {
 
     // copy this member to the editing member - the object that is 
