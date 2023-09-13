@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule }  from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
@@ -27,7 +28,8 @@ import { MemberDetailPageComponent } from './pages/member-detail-page/member-det
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule, 
+    HttpClientModule,
+    FormsModule,  
     AppRoutingModule, 
     ButtonModule, 
     MenubarModule, 
