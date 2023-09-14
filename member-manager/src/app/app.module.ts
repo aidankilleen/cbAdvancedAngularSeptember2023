@@ -7,6 +7,9 @@ import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
 import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DialogModule } from 'primeng/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,7 +36,10 @@ import { MemberDetailPageComponent } from './pages/member-detail-page/member-det
     AppRoutingModule, 
     ButtonModule, 
     MenubarModule, 
-    TableModule
+    TableModule, 
+    ToastModule, 
+    ConfirmDialogModule, 
+    DialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
