@@ -7,7 +7,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MemberService {
-  
   url: string = "http://localhost:3000/members"
   
   constructor(private http: HttpClient) { 
@@ -15,6 +14,10 @@ export class MemberService {
   
   getAll(): Observable<Member[]> {
     return this.http.get<Member[]>(this.url);
+  }
+  
+  add(member: Member) {
+    return this.http.post<Member>(this.url, member);
   }
   
   update(member: Member): Observable<Member> {

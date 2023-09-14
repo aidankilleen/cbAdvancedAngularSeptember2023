@@ -10,6 +10,11 @@ import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { CheckboxModule } from 'primeng/checkbox';
+import { CarouselModule } from 'primeng/carousel';
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,7 +44,10 @@ import { MemberDetailPageComponent } from './pages/member-detail-page/member-det
     TableModule, 
     ToastModule, 
     ConfirmDialogModule, 
-    DialogModule
+    DialogModule, 
+    InputTextModule, 
+    CheckboxModule, 
+    CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

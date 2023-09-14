@@ -53,16 +53,13 @@ import { MemberService } from 'src/app/services/member.service';
           <td>
             <p-cellEditor>
               <ng-template pTemplate="input">
-                <input pInputText type="checkbox" [(ngModel)]="member.active">
+                <p-checkbox [binary]="true" [(ngModel)]="member.active"/>
               </ng-template>
               <ng-template pTemplate="output">
                 {{ member.active ? "Active" : "Inactive" }}
               </ng-template>
             </p-cellEditor>            
           </td>
-
-
-
           <td>
             <button 
               *ngIf="!editing" 
@@ -105,10 +102,19 @@ import { MemberService } from 'src/app/services/member.service';
       </ng-template>
     </p-table>
     <p-dialog header="Header" [(visible)]="showDialog" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
-        <p class="m-0">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+
+      <ng-template pTemplate="header">
+          <span class="text-xl font-bold">Add Member</span>
+      </ng-template>
+      <div>
+        <input pInputText type="text" placeholder="name" [(ngModel)]="dialogMember.name"/><br>
+        <input pInputText type="text" placeholder="your.name@gmail.com" [(ngModel)]="dialogMember.email"/><br>
+        <p-checkbox [(ngModel)]="dialogMember.active" [binary]="true"></p-checkbox>
+      </div>
+      <ng-template pTemplate="footer">
+          <p-button icon="pi pi-check" (click)="onDialogSave()" label="Ok" styleClass="p-button-text"></p-button>
+          <p-button icon="pi pi-times" (click)="showDialog = false" label="Cancel" styleClass="p-button-text"></p-button>
+      </ng-template>
     </p-dialog>
     <p-toast></p-toast>
     <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
@@ -121,6 +127,7 @@ export class MemberListPageComponent implements OnInit {
   members$!: Observable<Member[]>;
 
   showDialog = false;
+  dialogMember: Member = new Member();
 
   clonedMembers: { [s: string]: Member } = {};
 
@@ -182,5 +189,21 @@ export class MemberListPageComponent implements OnInit {
   }
   onAddMember() {
     this.showDialog = true;
+  }
+
+  onDialogSave() {
+
+    this.memberService.add(this.dialogMember)
+      .subscribe((member) => {
+        this.messageService.add({
+          severity: 'success', 
+          summary: 'Created', 
+          detail: `${ member.name } was added` 
+        });
+
+        this.members$=this.memberService.getAll();
+      });
+
+    this.showDialog = false;
   }
 }

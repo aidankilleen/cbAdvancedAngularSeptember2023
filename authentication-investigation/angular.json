@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "member-manager": {
+    "authentication-investigation": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/member-manager",
+            "outputPath": "dist/authentication-investigation",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -25,9 +25,6 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/primeicons/primeicons.css",
-              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
-              "node_modules/primeng/resources/primeng.min.css",              
               "src/styles.css"
             ],
             "scripts": []
@@ -38,7 +35,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "2mb"
+                  "maximumError": "1mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -63,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "member-manager:build:production"
+              "browserTarget": "authentication-investigation:build:production"
             },
             "development": {
-              "browserTarget": "member-manager:build:development"
+              "browserTarget": "authentication-investigation:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "member-manager:build"
+            "browserTarget": "authentication-investigation:build"
           }
         },
         "test": {
