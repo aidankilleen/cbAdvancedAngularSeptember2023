@@ -11,6 +11,8 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { PublicPageComponent } from './pages/public-page/public-page.component';
 import { PrivatePageComponent } from './pages/private-page/private-page.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,11 +20,13 @@ import { AdminPageComponent } from './pages/admin-page/admin-page.component';
     HomePageComponent,
     PublicPageComponent,
     PrivatePageComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     AppRoutingModule,
     ButtonModule, 
     MenubarModule

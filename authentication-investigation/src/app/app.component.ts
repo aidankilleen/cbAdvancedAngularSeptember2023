@@ -8,16 +8,9 @@ import User from './user.model';
     <p-menubar [model]="items"></p-menubar>
 
 
-    {{ authService.isLoggedIn ? "Logged In" : "Not Logged In"}}
+    {{ (authService.isLoggedIn$ | async) ? "Logged In" : "Not Logged In"}}
 
-    <p-button 
-      *ngIf="!authService.isLoggedIn" 
-      label="Login" 
-      (click)="onClick()"/>
-    <p-button 
-      *ngIf="authService.isLoggedIn" 
-      label="Logout" 
-      (click)="authService.logout()"/>
+
 
     <router-outlet/>
 
@@ -47,6 +40,10 @@ export class AppComponent {
       label: 'Admin',
       icon: 'pi pi-user', 
       routerLink: 'admin'
+    }, 
+    {
+      label: 'Login', 
+      routerLink: 'login'
     }
 
   ];
@@ -54,8 +51,5 @@ export class AppComponent {
   constructor(public authService: AuthService) {
     
   }
-  onClick() {
-    let user = new User("aidan@gmail.com", "letmein");
-    this.authService.login(user);
-  }
+
 }
