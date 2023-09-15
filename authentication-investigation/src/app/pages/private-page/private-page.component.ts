@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import Member from 'src/app/member.model';
-import { MemberService } from 'src/app/member.service';
+import Member from 'src/app/models/member.model';
+import { MemberService } from 'src/app/services/member.service';
 
 @Component({
   selector: 'private-page',
@@ -8,6 +8,9 @@ import { MemberService } from 'src/app/member.service';
     <p>
       {{ members | json }}
     </p>
+
+    <button (click)="onAdd()">Add Member</button>
+
   `,
   styleUrls: ['./private-page.component.css']
 })
@@ -23,6 +26,19 @@ export class PrivatePageComponent implements OnInit {
       .subscribe((members:Member[]) => {
         this.members = members;
       } );
+  }
+
+  onAdd() {
+
+    let member = new Member(0, 
+                            "Aidans New Member", 
+                            "anm@gmail.com", 
+                            true);
+
+    this.memberService.add(member)
+      .subscribe(addedMember => {
+        this.members.push(addedMember);
+      });
   }
 
 

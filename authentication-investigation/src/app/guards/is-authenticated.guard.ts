@@ -1,5 +1,5 @@
 import { CanActivateFn, Router } from '@angular/router';
-import { AuthService } from './auth.service';
+import { AuthService } from '../services/auth.service';
 import { inject } from '@angular/core';
 import { tap } from 'rxjs';
 
@@ -20,7 +20,9 @@ export const isAuthenticatedGuard: CanActivateFn = (route, state) => {
         // along with a redirect location
         // show the message
         // if successful login -> redirect location
-        router.navigate(['login']);
+
+        console.log(`trying to go to ${ route.url }`)
+        router.navigate(['login', { destination: route.url, message: "Please login" } ]);
 
       }
   return loggedIn;

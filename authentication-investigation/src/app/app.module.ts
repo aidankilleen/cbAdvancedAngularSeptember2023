@@ -14,6 +14,8 @@ import { PrivatePageComponent } from './pages/private-page/private-page.componen
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { FormsModule } from '@angular/forms';
+import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     PublicPageComponent,
     PrivatePageComponent,
     AdminPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { FormsModule } from '@angular/forms';
     ButtonModule, 
     MenubarModule
   ],
-  providers: [],
+  providers: [ AuthInterceptorProvider ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
