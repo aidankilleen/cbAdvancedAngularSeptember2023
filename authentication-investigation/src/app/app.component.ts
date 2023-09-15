@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
 import User from './user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -43,12 +44,19 @@ export class AppComponent {
     }, 
     {
       label: 'Login', 
-      routerLink: 'login'
+      command: () => {
+        //alert("clicked login");
+
+        // programatically navigate to the login page
+        this.router.navigate(['login'])
+
+      }
     }
 
   ];
 
-  constructor(public authService: AuthService) {
+  constructor(public authService: AuthService, 
+              public router: Router) {
     
   }
 
